@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<bean id="employee1" class="net.atos.spring.training.example3.dto.Employee">
+		<property name="id" value="1" />
+		<property name="firstName" value="Rupesh" />
+		<property name="lastName" value="Deshmukh" />
+		<property name="salaryCode" value="2530" />
+		<property name="contactDetails" ref="contactDetails1" />
+		<property name="projects">
+			<map>
+				<entry key="1" value="MACS" />
+				<entry key="2" value="MTS" />
+				<entry key="3" value="TES" />
+			</map>
+		</property>
+		<property name="customProperties">
+			<props>
+				<prop key="hobby">Singing, Cricket</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="employee2" class="net.atos.spring.training.example3.dto.Employee">
+		<property name="id" value="2" />
+		<property name="firstName" value="Sachin" />
+		<property name="lastName" value="Deshmukh" />
+		<property name="salaryCode" value="2531" />
+		<property name="contactDetails" ref="contactDetails2" />
+		<property name="projects">
+			<map>				
+				<entry key="1" value="MST" />
+			</map>
+		</property>
+		<property name="customProperties">
+			<props>
+				<prop key="hobby">Reading</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="employee3" class="net.atos.spring.training.example3.dto.Employee">
+		<property name="id" value="3" />
+		<property name="firstName" value="Varun" />
+		<property name="lastName" value="Deshmukh" />
+		<property name="salaryCode" value="2532" />
+		<property name="contactDetails" ref="contactDetails3" />
+		<property name="projects">
+			<map>				
+				<entry key="1" value="Envoy" />
+			</map>
+		</property>
+		<property name="customProperties">
+			<props>
+				<prop key="hobby">Traveling</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="contactDetails1" class="net.atos.spring.training.example3.dto.ContactDetails">
+		<property name="emailAddress" value="rupesh.deshmukh@atos.net" />
+		<property name="mobileNumber" value="9833049266" />
+		<property name="addresses">
+			<list>
+				<ref bean="address1" />
+				<ref bean="address2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="contactDetails2" class="net.atos.spring.training.example3.dto.ContactDetails">
+		<property name="emailAddress" value="sachin.deshmukh@atos.net" />
+		<property name="mobileNumber" value="9833049267" />
+	</bean>
+
+	<bean id="contactDetails3" class="net.atos.spring.training.example3.dto.ContactDetails">
+		<property name="emailAddress" value="varun.deshmukh@atos.net" />
+		<property name="mobileNumber" value="9833049268" />
+	</bean>
+
+	<bean id="address1" class="net.atos.spring.training.example3.dto.Address">
+		<property name="line1" value="Appostrophe, E-203" />
+		<property name="line2" value="Survey No. 174" />
+		<property name="line3" value="Wakad-Thergaon Road, Wakad" />
+		<property name="city" value="Pune" />
+		<property name="state" value="Maharashtra" />
+		<property name="zipCode" value="411057" />
+		<property name="addressType" value="PERMANENT" />
+	</bean>
+
+	<bean id="address2" class="net.atos.spring.training.example3.dto.Address">
+		<property name="line1" value="Atos India Pvt. Ltd." />
+		<property name="line2"
+			value="Rajiv Gandhi Info Tech Park, Embassy Tech Zone" />
+		<property name="line3" value="Block 1.6, MIDC Phase II, Hinjawadi" />
+		<property name="city" value="Pune" />
+		<property name="state" value="Maharashtra" />
+		<property name="zipCode" value="411057" />
+		<property name="addressType" value="OFFICE" />
+	</bean>
+</beans>

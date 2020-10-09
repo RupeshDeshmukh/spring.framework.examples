@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<!-- To demonstrate autowire := byName -->
+	<bean id="messageServiceByName"
+		class="net.atos.spring.training.example5.byname.MessageServiceImpl" />
+	<bean id="messagePrinterByName" class="net.atos.spring.training.example5.byname.MessagePrinter"
+		autowire="byName" />
+
+	<!-- To demonstrate autowire := byType -->
+	<bean id="messageServiceByType"
+		class="net.atos.spring.training.example5.bytype.MessageServiceImpl" />
+	<bean id="messagePrinterByType" class="net.atos.spring.training.example5.bytype.MessagePrinter"
+		autowire="byType" />
+
+	<!-- To demonstrate autowire := constructor -->
+	<bean id="messageServiceByConstructor"
+		class="net.atos.spring.training.example5.constructor.MessageServiceImpl" />
+	<bean id="messagePrinterByConstructor"
+		class="net.atos.spring.training.example5.constructor.MessagePrinter"
+		autowire="constructor" />
+</beans>

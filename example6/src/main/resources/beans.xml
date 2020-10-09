@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<bean id="helloWorld"
+		class="net.atos.spring.training.example6.beanlifecycle.HelloWorld"
+		init-method="init" destroy-method="destroy">
+		<property name="message" value="Hello World!" />
+	</bean>
+
+	<bean id="singletonScope"
+		class="net.atos.spring.training.example6.beanscope.SingletonScope"
+		scope="singleton">
+		<property name="message" value="Hello World!" />
+	</bean>
+	<bean id="prototypeScope"
+		class="net.atos.spring.training.example6.beanscope.PrototypeScope"
+		scope="prototype">
+		<property name="message" value="Hello World!" />
+	</bean>
+
+</beans>

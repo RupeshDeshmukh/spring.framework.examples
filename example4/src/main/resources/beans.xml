@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<!-- Demonstrates Type 1 DI using Factory Method. -->
+	<bean id="staticFMOwnClass"
+		class="net.atos.spring.training.example4.type1.StaticFMOwnClass"
+		factory-method="getInstance" />
+
+	<!-- Demonstrates Type 2 DI using Factory Method. -->
+	<bean id="messageServiceFactory"
+		class="net.atos.spring.training.example4.type2.MessageServiceFactory"
+		factory-method="getMessageService">
+		<constructor-arg value="ServiceB" />
+	</bean>
+
+	<!-- Demonstrates Type 3 DI using Factory Method. -->
+	<bean id="transportServiceFactory"
+		class="net.atos.spring.training.example4.type3.TransportServiceFactory" />
+	<bean id="carService" factory-bean="transportServiceFactory"
+		factory-method="createCarInstance" />
+	<bean id="busService" factory-bean="transportServiceFactory"
+		factory-method="createBusInstance" />
+
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<import resource="employee-data.xml" />
+
+	<bean id="employeeService"
+		class="net.atos.spring.training.example3.service.EmployeeServiceImpl">
+		<constructor-arg ref="employeeDAO" />
+	</bean>
+
+	<bean id="employeeDAO" class="net.atos.spring.training.example3.dao.EmployeeDAOImpl">
+		<property name="employees">
+			<set>
+				<ref bean="employee1" />
+				<ref bean="employee2" />
+				<ref bean="employee3" />
+			</set>
+		</property>
+	</bean>
+</beans>

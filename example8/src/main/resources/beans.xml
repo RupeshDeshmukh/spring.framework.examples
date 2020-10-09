@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+
+	<bean id="studentService" class="net.atos.spring.training.example8.StudentServiceImpl" />
+	<bean id="loggingInterceptor" class="net.atos.spring.training.example8.LoggingInterceptor" />
+	<bean id="performanceMetrics" class="net.atos.spring.training.example8.PerformanceMetrics" />
+
+	<aop:config>
+		<aop:pointcut id="studentSave"
+			expression="execution(* net.atos.spring.training.example8.StudentService.saveStudent(..))" />
+
+		<aop:aspect id="calculateResponseTime" ref="performanceMetrics"
+			order="0">
+			<aop:around pointcut-ref="studentSave" method="profile" />
+		</aop:aspect>
+
+		<aop:aspect id="performLogging" ref="loggingInterceptor"
+			order="1">
+			<aop:before pointcut-ref="studentSave" method="beforeAdvice" />
+			<aop:after pointcut-ref="studentSave" method="afterAdvice" />
+			<aop:after-returning pointcut-ref="studentSave"
+				method="afterReturningAdvice" returning="retVal" />
+		</aop:aspect>
+	</aop:config>
+</beans>
